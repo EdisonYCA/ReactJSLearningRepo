@@ -4,6 +4,11 @@ import TabButton  from "./components/TabButton.jsx";
 import { CORE_CONCEPTS } from "./data";
 
 function App() {
+  let tabContent = "Please Click a Button!";
+  function selected(component){
+    tabContent = component;
+}
+
   return (
     <div>
       <Header/>
@@ -21,11 +26,12 @@ function App() {
       <section id="examples">
         <h2>Examples</h2>
         <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>States</TabButton>
+            <TabButton onSelect={() => selected("components")}>Components</TabButton>
+            <TabButton onSelect={() => selected("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => selected("props")}>Props</TabButton>
+            <TabButton onSelect={() => selected("states")}>States</TabButton>
         </menu>
+        {tabContent}
       </section>
     </div>
   );
